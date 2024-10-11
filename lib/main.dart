@@ -124,6 +124,7 @@ class _MyAppState extends State<MyApp> {
           child: MyWidget(
             themeMode: _themeMode,
             themeModeIcon: _themeModeIcon,
+            onButtonTap: _toggleThemeMode,
           ),
         ),
       ),
@@ -134,11 +135,13 @@ class _MyAppState extends State<MyApp> {
 class MyWidget extends StatelessWidget {
   final ThemeMode themeMode;
   final IconData themeModeIcon;
+  final void Function() onButtonTap;
 
   const MyWidget({
     required this.themeMode,
     required this.themeModeIcon,
     super.key,
+    required this.onButtonTap,
   });
 
   @override
@@ -156,7 +159,8 @@ class MyWidget extends StatelessWidget {
         const SizedBox(height: 10),
         Icon(themeModeIcon, size: 48),
         const SizedBox(height: 20),
-        ElevatedButton(onPressed: () {}, child: const Text("Hi there")),
+        ElevatedButton(
+            onPressed: onButtonTap, child: const Text("Switch Mode")),
       ],
     );
   }
