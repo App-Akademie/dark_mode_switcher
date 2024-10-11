@@ -24,6 +24,12 @@ ThemeData lightTheme = ThemeData(
     ),
     iconTheme: IconThemeData(color: Colors.white), // Icon color
   ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+    foregroundColor: Colors.grey,
+    backgroundColor: Colors.black,
+    textStyle: const TextStyle(),
+  )),
   colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
   scaffoldBackgroundColor: Colors.white,
 );
@@ -34,7 +40,7 @@ ThemeData darkTheme = ThemeData(
     displayLarge: TextStyle(
         fontSize: 32, fontWeight: FontWeight.bold, color: darkThemeTextColor),
     headlineMedium: TextStyle(
-        fontSize: 24,
+        fontSize: 38,
         color: darkThemeTextColor), // Keep the headlineMedium for dark mode
     bodyLarge: TextStyle(fontSize: 18, color: darkThemeTextColor),
     bodyMedium: TextStyle(fontSize: 16, color: darkThemeTextColor),
@@ -48,6 +54,13 @@ ThemeData darkTheme = ThemeData(
       fontWeight: FontWeight.bold,
     ),
     iconTheme: IconThemeData(color: Colors.white), // Icon color
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      foregroundColor: Colors.yellow,
+      backgroundColor: Colors.red,
+      textStyle: const TextStyle(fontWeight: FontWeight.bold),
+    ),
   ),
   colorScheme: ColorScheme.fromSeed(seedColor: Colors.red)
       .copyWith(brightness: Brightness.dark),
@@ -138,12 +151,12 @@ class MyWidget extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: 20),
-        Text(
-          'Current Theme Mode: ${themeMode.toString().split('.').last}',
-          style: Theme.of(context).textTheme.bodyLarge,
-        ),
+        Text('Current Theme Mode: ${themeMode.toString().split('.').last}',
+            style: Theme.of(context).textTheme.bodyLarge),
         const SizedBox(height: 10),
         Icon(themeModeIcon, size: 48),
+        const SizedBox(height: 20),
+        ElevatedButton(onPressed: () {}, child: const Text("Hi there")),
       ],
     );
   }
